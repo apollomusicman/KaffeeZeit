@@ -1,5 +1,4 @@
 using System.Net;
-using System.Net.Http;
 using KaffeeZeit.Server.Controllers.Dtos;
 using KaffeeZeit.Server.Models;
 using KaffeeZeit.Server.Service;
@@ -33,6 +32,7 @@ namespace KaffeeZeit.Server.Controllers
             }
             catch (InvalidOperationException)
             {
+                //TODO add error code or message.
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
 

@@ -25,3 +25,33 @@ Content-Type: application/json
 }
 
 ###
+
+GET {{KaffeeZeit.Server_HostAddress}}/tab/
+Accept: application/json
+
+###
+
+POST {{KaffeeZeit.Server_HostAddress}}/tab/
+Accept: application/json
+Content-Type:application/json
+
+{
+  "orders": [
+    {
+      "coworkerId": "86292aaa-2857-46dd-9507-131a744268a4",
+      "drinkCost": 1.00
+    },
+    {
+      "coworkerId": "325fa732-654a-4f8d-ae65-c44dab74a849",
+      "drinkCost": 2.00
+    }
+  ],
+  "revision": 0
+}
+
+###
+
+GET {{KaffeeZeit.Server_HostAddress}}/tab/whos-next
+Accept: application/json
+
+###

@@ -3,32 +3,31 @@ using KaffeeZeit.Server.Models;
 
 namespace KaffeeZeit.Server.Service
 {
+    //TODO this might be redundant with TabService.
     public class CoworkerService
     {
         // TODO Ideally use dependency injection to manage lifecycle, come back to that if there is time.
         private static readonly Lazy<CoworkerService> _instance = new(() => new CoworkerService()); 
-        // TODO time permitting put this in some lightweight db i.e. reddis, or mongodb. 
-        private readonly Dictionary<Guid, Coworker> _coworkers = [];
+        private readonly TabService _tabService = TabService.Instance;
 
         public static CoworkerService Instance { get { return _instance.Value; } }
-        public List<Coworker> Coworkers { get { return [.. _coworkers.Values]; } }
+        public List<Coworker> Coworkers { get { return [.. _tabService.Tabs.Select(t => t.Coworker)]; } }
 
         private CoworkerService() { }
 
         public void AddCoworker(CreateCoworkerRequest request)
         {
-            if (_coworkers.Any(coworker => coworker.Value.Name == request.Name))
+            if (_tabService.Tabs.Any(t => string.Equals(t.Coworker.Name, request.Name, StringComparison.OrdinalIgnoreCase)))
             {
                 throw new InvalidOperationException("Cannot add a coworker with duplicate name.");
             }
             var coworker = new Coworker { Name = request.Name };
-
-            _coworkers.Add(coworker.Id, coworker);
+            _tabService.AddTab(coworker);
         }
 
         public void RemoveCoworker(Guid id)
         {
-            _coworkers.Remove(id);
+            _tabService.RemoveTabByCoworkerId(id);
         }
     }
 }
