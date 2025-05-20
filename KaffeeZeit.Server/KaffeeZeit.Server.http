@@ -1,6 +1,27 @@
 @KaffeeZeit.Server_HostAddress = http://localhost:5248
 
-GET {{KaffeeZeit.Server_HostAddress}}/weatherforecast/
+GET {{KaffeeZeit.Server_HostAddress}}/coworker/
 Accept: application/json
+
+###
+
+
+POST {{KaffeeZeit.Server_HostAddress}}/coworker/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "bob"
+}
+
+###
+
+POST {{KaffeeZeit.Server_HostAddress}}/coworker/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "jim"
+}
 
 ###

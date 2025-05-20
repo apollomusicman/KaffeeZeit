@@ -1,3 +1,5 @@
+using System.Net;
+using System.Net.Http;
 using KaffeeZeit.Server.Controllers.Dtos;
 using KaffeeZeit.Server.Models;
 using KaffeeZeit.Server.Service;
@@ -9,16 +11,13 @@ namespace KaffeeZeit.Server.Controllers
     [Route("[controller]")]
     public class CoworkerController : ControllerBase
     {
+        private readonly CoworkerService _coworkerService = CoworkerService.Instance;
 
-        private readonly ILogger<CoworkerController> _logger;
-        private CoworkerService _coworkerService = new CoworkerService();
-
-        public CoworkerController(ILogger<CoworkerController> logger)
+        public CoworkerController()
         {
-            _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet]
         public IEnumerable<Coworker> Get()
         {
             return _coworkerService.Coworkers;
@@ -26,15 +25,25 @@ namespace KaffeeZeit.Server.Controllers
 
         [HttpPost]
 
-        public void Post(CreateCoworkerRequest request)
+        public HttpResponseMessage Post(CreateCoworkerRequest request)
         {
-            _coworkerService.AddCoworker(request);
+            try
+            {
+                _coworkerService.AddCoworker(request);
+            }
+            catch (InvalidOperationException)
+            {
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(Guid id)
+        public HttpResponseMessage Delete(Guid id)
         {
             _coworkerService.RemoveCoworker(id);
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
     }
 }

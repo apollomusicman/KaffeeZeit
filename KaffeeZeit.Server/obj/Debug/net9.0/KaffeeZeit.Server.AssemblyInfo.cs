@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KaffeeZeit.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+283dd635b013e359c6d77036e3983eaf25beeaf9")]
 [assembly: System.Reflection.AssemblyProductAttribute("KaffeeZeit.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KaffeeZeit.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

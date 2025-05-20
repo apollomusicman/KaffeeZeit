@@ -5,19 +5,21 @@ namespace KaffeeZeit.Server.Service
 {
     public class CoworkerService
     {
+        // TODO Ideally use dependency injection to manage lifecycle, come back to that if there is time.
+        private static readonly Lazy<CoworkerService> _instance = new(() => new CoworkerService()); 
         // TODO time permitting put this in some lightweight db i.e. reddis, or mongodb. 
         private readonly Dictionary<Guid, Coworker> _coworkers = [];
 
+        public static CoworkerService Instance { get { return _instance.Value; } }
         public List<Coworker> Coworkers { get { return [.. _coworkers.Values]; } }
 
-        public CoworkerService() { }
+        private CoworkerService() { }
 
         public void AddCoworker(CreateCoworkerRequest request)
         {
             if (_coworkers.Any(coworker => coworker.Value.Name == request.Name))
             {
-                //TODO add error handling. Names probably should be unique to avoid confusion of who owes what.
-                return;
+                throw new InvalidOperationException("Cannot add a coworker with duplicate name.");
             }
             var coworker = new Coworker { Name = request.Name };
 
