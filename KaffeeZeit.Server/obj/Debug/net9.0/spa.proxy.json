@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:50577",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "D:\\Dev\\KaffeeZeit\\KaffeeZeit.Server\\..\\kaffeezeit.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}
