@@ -5,6 +5,7 @@ namespace KaffeeZeit.Server.Models
         private decimal _runningTab = 0;
 
         public required Coworker Coworker { get; init; }
+        public required bool IsNextToPay { get; set; }
 
         public decimal RunningTab
         {

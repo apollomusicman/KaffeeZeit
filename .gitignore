@@ -23,4 +23,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-KaffeeZeit.Server/obj/Debug/
+KaffeeZeit.Server/obj/*
+KaffeeZeit.Server/bin/*

@@ -22,7 +22,7 @@ namespace KaffeeZeit.Server.Service
 
         public void AddTab (Coworker coworker)
         {
-            _tabs.Add(new Tab { Coworker = coworker });
+            _tabs.Add(new Tab { Coworker = coworker, IsNextToPay = false });
         }
 
         public void RemoveTab (Coworker coworker)
@@ -51,6 +51,8 @@ namespace KaffeeZeit.Server.Service
                     tab?.AddToTab(order.DrinkCost);
                 }
                 _currentOrderBalance = orderRequest.Orders.Sum(o => o.DrinkCost);
+                var nextToPay = _tabs.Single(t => t.Coworker.Id == GetWhoIsNextToPay().Id);
+                nextToPay.IsNextToPay = true;
             }
         }
 
@@ -64,13 +66,19 @@ namespace KaffeeZeit.Server.Service
 
         public void HandlePayment(PaymentRequest paymentRequest)
         {
+            var tab = _tabs.SingleOrDefault(t => t.Coworker.Id == paymentRequest.CoworkerId);
+            if (tab is null)
+                throw new InvalidOperationException();
+            if (!paymentRequest.OverrideNext && !tab.IsNextToPay)
+            {
+                throw new ApplicationException();
+            }
+
             lock (_lock)
             {
-                var tab = _tabs.SingleOrDefault(t => t.Coworker.Id == paymentRequest.CoworkerId);
-                if (tab is null)
-                    throw new InvalidOperationException();
                 tab.RemoveFromTab(_currentOrderBalance);
                 _currentOrderBalance = 0;
+                tab.IsNextToPay = false;
             }
         }
     }

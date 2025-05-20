@@ -23,17 +23,11 @@ namespace KaffeeZeit.Server.Controllers
                 {
                     CoworkerName = t.Coworker.Name,
                     CoworkerId = t.Coworker.Id,
-                    RunningTab = t.RunningTab
+                    RunningTab = t.RunningTab,
+                    IsNextToPay = t.IsNextToPay
                 })
                 .ToList();
             return new RunningTabs { CoworkerTabs = tabs, Revision = _tabService.Revision };
-        }
-
-        [HttpGet]
-        [Route("whos-next")]
-        public Models.Coworker GetWhoIsNext()
-        {
-            return _tabService.GetWhoIsNextToPay();
         }
 
         [HttpPost]
@@ -61,6 +55,12 @@ namespace KaffeeZeit.Server.Controllers
                 _tabService.HandlePayment(paymentRequest);
             }
             catch (InvalidOperationException)
+            {
+                var response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                // TODO add error code or message.
+                return response;
+            }
+            catch (ApplicationException)
             {
                 var response = new HttpResponseMessage(HttpStatusCode.BadRequest);
                 // TODO add error code or message.

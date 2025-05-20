@@ -26,6 +26,16 @@ Content-Type: application/json
 
 ###
 
+POST {{KaffeeZeit.Server_HostAddress}}/coworker/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "matt"
+}
+
+###
+
 GET {{KaffeeZeit.Server_HostAddress}}/tab/
 Accept: application/json
 
@@ -38,20 +48,30 @@ Content-Type:application/json
 {
   "orders": [
     {
-      "coworkerId": "86292aaa-2857-46dd-9507-131a744268a4",
+      "coworkerId": "a426f15c-23d9-45b2-9c5c-f368192d8411",
       "drinkCost": 1.00
     },
     {
-      "coworkerId": "325fa732-654a-4f8d-ae65-c44dab74a849",
+      "coworkerId": "0d9d1107-a55f-4acd-8b1a-1294fc5437c5",
       "drinkCost": 2.00
+    },
+    {
+      "coworkerId": "652ad97f-c3c9-485f-9647-cf267f61b475",
+      "drinkCost": 1.50
     }
   ],
-  "revision": 0
+  "revision": 1
 }
 
 ###
 
-GET {{KaffeeZeit.Server_HostAddress}}/tab/whos-next
+POST {{KaffeeZeit.Server_HostAddress}}/tab/pay
 Accept: application/json
+Content-Type:application/json
+
+{
+  "coworkerId": "e9104738-3839-4dfc-8063-a1d0717276b1",
+  "overrideNext": false
+}
 
 ###
