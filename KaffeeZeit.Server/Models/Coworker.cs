@@ -10,6 +10,6 @@ namespace KaffeeZeit.Server.Models
 
         public Guid Id { get { return _id; } }
 
-        
+        public required decimal FavoriteDrinkCost { get; init; }
     }
 }

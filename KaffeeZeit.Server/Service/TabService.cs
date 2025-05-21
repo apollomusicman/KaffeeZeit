@@ -9,7 +9,7 @@ namespace KaffeeZeit.Server.Service
     {
         // TODO Ideally use dependency injection to manage lifecycle, come back to that if there is time.
         private static readonly Lazy<TabService> _instance = new(() => new TabService());
-        // TODO This should be stored in a db for fault tolerance. Come back to that if there is time. 
+        // TODO This should be stored in a db or file for fault tolerance. Come back to that if there is time. 
         private readonly HashSet<Tab> _tabs = [];
         private int _revision = 0;
         private decimal _currentOrderBalance = 0;
@@ -47,6 +47,8 @@ namespace KaffeeZeit.Server.Service
                 _revision += 1;
                 foreach (var order in orderRequest.Orders)
                 {
+                    if (order.DrinkCost != 0 && order.UseFavorite)
+                        throw new ApplicationException();
                     var tab = _tabs.SingleOrDefault(t => t.Coworker.Id == order.CoworkerId);
                     tab?.AddToTab(order.DrinkCost);
                 }

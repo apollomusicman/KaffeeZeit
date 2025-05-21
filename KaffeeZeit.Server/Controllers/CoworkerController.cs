@@ -17,14 +17,14 @@ namespace KaffeeZeit.Server.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Coworker> Get()
+        public IActionResult Get()
         {
-            return _coworkerService.Coworkers;
+            return Ok(_coworkerService.Coworkers);
         }
 
         [HttpPost]
 
-        public HttpResponseMessage Post(CreateCoworkerRequest request)
+        public IActionResult Post(CreateCoworkerRequest request)
         {
             try
             {
@@ -32,18 +32,22 @@ namespace KaffeeZeit.Server.Controllers
             }
             catch (InvalidOperationException)
             {
-                //TODO add error code or message.
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+                var error = new ErrorResponse
+                {
+                    ErrorCode = "NameConflictError",
+                    ErrorMessage = "The given name is already taken, please choose a diferent  name."
+                };
+                return Conflict(error);
             }
 
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            return Ok();
         }
 
         [HttpDelete("{id}")]
-        public HttpResponseMessage Delete(Guid id)
+        public IActionResult Delete(Guid id)
         {
             _coworkerService.RemoveCoworker(id);
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            return Ok();
         }
     }
 }

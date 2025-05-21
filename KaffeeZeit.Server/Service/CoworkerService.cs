@@ -21,7 +21,7 @@ namespace KaffeeZeit.Server.Service
             {
                 throw new InvalidOperationException("Cannot add a coworker with duplicate name.");
             }
-            var coworker = new Coworker { Name = request.Name };
+            var coworker = new Coworker { Name = request.Name, FavoriteDrinkCost = request.FavoriteDrinkCost };
             _tabService.AddTab(coworker);
         }
 

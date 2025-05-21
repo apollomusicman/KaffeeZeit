@@ -48,15 +48,15 @@ Content-Type:application/json
 {
   "orders": [
     {
-      "coworkerId": "a426f15c-23d9-45b2-9c5c-f368192d8411",
+      "coworkerId": "bb008dd5-5c50-4efe-b6dc-14664205dcc7",
       "drinkCost": 1.00
     },
     {
-      "coworkerId": "0d9d1107-a55f-4acd-8b1a-1294fc5437c5",
+      "coworkerId": "ac5e2bcb-863b-4917-b1e5-8baa2c5e2da1",
       "drinkCost": 2.00
     },
     {
-      "coworkerId": "652ad97f-c3c9-485f-9647-cf267f61b475",
+      "coworkerId": "82a7e0f2-cab5-4c6e-9057-d001b63b1d4f",
       "drinkCost": 1.50
     }
   ],
@@ -70,8 +70,8 @@ Accept: application/json
 Content-Type:application/json
 
 {
-  "coworkerId": "e9104738-3839-4dfc-8063-a1d0717276b1",
-  "overrideNext": false
+  "coworkerId": "bb008dd5-5c50-4efe-b6dc-14664205dcc7",
+  "overrideNext": true
 }
 
 ###
