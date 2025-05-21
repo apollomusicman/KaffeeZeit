@@ -11,6 +11,6 @@ namespace KaffeeZeit.Server.Controllers.Dtos
         public required string CoworkerName { get; init; }
         public required Guid CoworkerId { get; init; }
         public required decimal RunningTab { get; init; }
-        public bool? IsNextToPay { get; init; }
+        public required bool IsNextToPay { get; init; }
     }
 }
