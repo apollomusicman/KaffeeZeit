@@ -24,7 +24,8 @@ https://localhost:50577
 # Steps to use
 
 - Add coworkers 
-- Create a new order, users can either use their favorite drink cost 
+- Create a new order, users can either order their favorite drink or enter a custom amount if a different drink is ordered. 
+- Choose a payer, this can be either the user deemed next, or can be overridden if someone else wants to pickup the next tab.  
 
 # Design choices
 
