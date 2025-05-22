@@ -24,10 +24,16 @@ namespace KaffeeZeit.Server.Controllers
                     CoworkerName = t.Coworker.Name,
                     CoworkerId = t.Coworker.Id,
                     RunningTab = t.RunningTab,
-                    IsNextToPay = t.IsNextToPay
+                    IsNextToPay = t.IsNextToPay,
+                    FavoriteDrinkCost = t.Coworker.FavoriteDrinkCost
                 })
                 .ToList();
-            return Ok(new RunningTabs { CoworkerTabs = tabs, Revision = _tabService.Revision });
+
+            return Ok(new RunningTabs {
+                CoworkerTabs = tabs,
+                Revision = _tabService.Revision,
+                IsCurrentOrderPaid = _tabService.IsOrderPaid
+            });
         }
 
         [HttpPost]

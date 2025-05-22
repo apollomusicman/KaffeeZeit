@@ -18,6 +18,7 @@ namespace KaffeeZeit.Server.Service
         public static TabService Instance { get { return _instance.Value; } }
         public ImmutableHashSet<Tab> Tabs { get { return [.. _tabs]; } }
         public int Revision { get { return _revision; } }
+        public bool IsOrderPaid { get { return _currentOrderBalance == 0; } }
         
 
         public void AddTab (Coworker coworker)
@@ -45,15 +46,17 @@ namespace KaffeeZeit.Server.Service
             lock (_lock)
             {
                 _revision += 1;
+                decimal orderSum = 0;
                 foreach (var order in orderRequest.Orders)
                 {
                     if (order.DrinkCost != 0 && order.UseFavorite)
                         throw new ApplicationException();
                     var tab = _tabs.SingleOrDefault(t => t.Coworker.Id == order.CoworkerId);
-                    var cost = order.UseFavorite ? tab?.Coworker.FavoriteDrinkCost : order.DrinkCost;
-                    tab?.AddToTab(order.DrinkCost);
+                    var cost = order.UseFavorite ? tab!.Coworker.FavoriteDrinkCost : order.DrinkCost;
+                    tab?.AddToTab(cost);
+                    orderSum += cost;
                 }
-                _currentOrderBalance = orderRequest.Orders.Sum(o => o.DrinkCost);
+                _currentOrderBalance = orderSum;
                 var nextToPay = _tabs.Single(t => t.Coworker.Id == GetWhoIsNextToPay().Id);
                 nextToPay.IsNextToPay = true;
             }
@@ -82,6 +85,7 @@ namespace KaffeeZeit.Server.Service
                 tab.RemoveFromTab(_currentOrderBalance);
                 _currentOrderBalance = 0;
                 tab.IsNextToPay = false;
+                _tabs.Single(t => t.Coworker.Id == GetWhoIsNextToPay().Id).IsNextToPay = true;
             }
         }
     }

@@ -29,8 +29,8 @@ function AddCoworkerModal({ closeModal, refreshTabs }) {
             <label htmlFor="favorite">Favorite drink cost</label>
             <input type="number" name="favorite" value={favoriteCost} onChange={onFavoriteChange}></input>
             <div>
-                <button onClick={onSubmit}>Submit</button>
-                <button onClick={onCancel}>Cancel</button>
+                <button style={{ backgroundColor: "seagreen" }} onClick={onSubmit}>Submit</button>
+                <button style={{ backgroundColor: "maroon" }} onClick={onCancel}>Cancel</button>
             </div>
         </div>
     );
@@ -50,6 +50,9 @@ function AddCoworkerModal({ closeModal, refreshTabs }) {
         });
         if (response.ok) {
             refreshTabs();
+        }
+        else {
+            //TODO display error.
         }
     }
 }
