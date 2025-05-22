@@ -8,6 +8,7 @@ namespace KaffeeZeit.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Produces("application/json")]
     public class CoworkerController : ControllerBase
     {
         private readonly CoworkerService _coworkerService = CoworkerService.Instance;
@@ -23,7 +24,6 @@ namespace KaffeeZeit.Server.Controllers
         }
 
         [HttpPost]
-
         public IActionResult Post(CreateCoworkerRequest request)
         {
             try

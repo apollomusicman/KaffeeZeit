@@ -5,7 +5,7 @@ using Tab = KaffeeZeit.Server.Models.Tab;
 
 namespace KaffeeZeit.Server.Service
 {
-    public class TabService
+    public sealed class TabService
     {
         // TODO Ideally use dependency injection to manage lifecycle, come back to that if there is time.
         private static readonly Lazy<TabService> _instance = new(() => new TabService());
@@ -50,6 +50,7 @@ namespace KaffeeZeit.Server.Service
                     if (order.DrinkCost != 0 && order.UseFavorite)
                         throw new ApplicationException();
                     var tab = _tabs.SingleOrDefault(t => t.Coworker.Id == order.CoworkerId);
+                    var cost = order.UseFavorite ? tab?.Coworker.FavoriteDrinkCost : order.DrinkCost;
                     tab?.AddToTab(order.DrinkCost);
                 }
                 _currentOrderBalance = orderRequest.Orders.Sum(o => o.DrinkCost);

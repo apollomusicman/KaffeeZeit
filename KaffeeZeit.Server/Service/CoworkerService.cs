@@ -4,7 +4,7 @@ using KaffeeZeit.Server.Models;
 namespace KaffeeZeit.Server.Service
 {
     //TODO this might be redundant with TabService.
-    public class CoworkerService
+    public sealed class CoworkerService
     {
         // TODO Ideally use dependency injection to manage lifecycle, come back to that if there is time.
         private static readonly Lazy<CoworkerService> _instance = new(() => new CoworkerService()); 

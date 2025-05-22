@@ -11,7 +11,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "bob"
+  "name": "bob",
+  "favoriteDrinkCost" : 1.50
 }
 
 ###
@@ -21,7 +22,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "jim"
+  "name": "jim",
+  "favoriteDrinkCost" : 1.00
 }
 
 ###
@@ -31,7 +33,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "matt"
+  "name": "matt",
+  "favoriteDrinkCost" : 2.00
 }
 
 ###
@@ -49,18 +52,21 @@ Content-Type:application/json
   "orders": [
     {
       "coworkerId": "bb008dd5-5c50-4efe-b6dc-14664205dcc7",
+      "useFavorite": false,
       "drinkCost": 1.00
     },
     {
       "coworkerId": "ac5e2bcb-863b-4917-b1e5-8baa2c5e2da1",
+      "useFavorite": false,
       "drinkCost": 2.00
     },
     {
       "coworkerId": "82a7e0f2-cab5-4c6e-9057-d001b63b1d4f",
+      "useFavorite": false,
       "drinkCost": 1.50
     }
   ],
-  "revision": 1
+  "revision": 0
 }
 
 ###

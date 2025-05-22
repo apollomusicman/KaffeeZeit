@@ -1,49 +1,53 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import CoworkerBox from './CoworkerBox';
+import AddCoworkerModal from './AddCoworkerModal';
 
 function App() {
-    const [forecasts, setForecasts] = useState();
+    const [coworkerTabs, setCoworkerTabs] = useState();
+    const [revision, setRevision] = useState();
+    const [showAddCoworker, setShowAddCoworker] = useState();
 
     useEffect(() => {
-        populateWeatherData();
+        fetchRunningTabs();
     }, []);
 
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
+    const refreshTabs = () => {
+        fetchRunningTabs();
+    }
+
+    const loading = <div>Loading...</div>;
+
+    const content = coworkerTabs === undefined ? loading :
+        <div>
+            {coworkerTabs.map(coworkerTab => <CoworkerBox name={coworkerTab.coworkerName} isNext={coworkerTab.isNextToPay} runningTab={coworkerTab.runningTab} />)}
+        </div>;
+
+    const onAddCoworker = (value) => {
+        setShowAddCoworker(value);
+    }
+
 
     return (
         <div>
-            <h1 id="tableLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+            <h1 id="mainheader">It's Coffee Time!</h1>
+            <div>
+                <button onClick={() => onAddCoworker(true)}>Add Coworker</button>
+                <button>Remove Coworker</button>
+            </div>
+            {showAddCoworker && <AddCoworkerModal closeModal={setShowAddCoworker} refreshTabs={refreshTabs} />}
+            {content}
         </div>
     );
     
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
+    async function fetchRunningTabs() {
+        //Set to empty array to trigger loading splash.
+        setCoworkerTabs([]);
+        const response = await fetch('tab');
         if (response.ok) {
             const data = await response.json();
-            setForecasts(data);
+            setCoworkerTabs(data.coworkerTabs);
+            setRevision(data.revision);
         }
     }
 }

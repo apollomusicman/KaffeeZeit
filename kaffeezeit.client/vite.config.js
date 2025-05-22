@@ -47,7 +47,11 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/weatherforecast': {
+            '^/tab': {
+                target,
+                secure: false
+            },
+            '^/coworker': {
                 target,
                 secure: false
             }

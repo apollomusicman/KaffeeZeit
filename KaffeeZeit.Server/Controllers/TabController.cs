@@ -1,7 +1,5 @@
-using System.Net;
 using KaffeeZeit.Server.Controllers.Dtos;
 using KaffeeZeit.Server.Service;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Tab = KaffeeZeit.Server.Controllers.Dtos.Tab;
 
@@ -9,6 +7,7 @@ namespace KaffeeZeit.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Produces("application/json")]
     public class TabController : ControllerBase
     {
         private readonly TabService _tabService = TabService.Instance;
@@ -28,7 +27,7 @@ namespace KaffeeZeit.Server.Controllers
                     IsNextToPay = t.IsNextToPay
                 })
                 .ToList();
-            return Ok( new RunningTabs { CoworkerTabs = tabs, Revision = _tabService.Revision });
+            return Ok(new RunningTabs { CoworkerTabs = tabs, Revision = _tabService.Revision });
         }
 
         [HttpPost]
