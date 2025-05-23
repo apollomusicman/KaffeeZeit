@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "kaffeezeit.client", "kaffeezeit.client\kaffeezeit.client.esproj", "{E2E3E96C-3650-C030-18E7-47C440095F64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaffeeZeit.Server", "KaffeeZeit.Server\KaffeeZeit.Server.csproj", "{278C4927-F0C9-4A34-BC3E-8A61ABD60B48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2E3E96C-3650-C030-18E7-47C440095F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2E3E96C-3650-C030-18E7-47C440095F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2E3E96C-3650-C030-18E7-47C440095F64}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E2E3E96C-3650-C030-18E7-47C440095F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2E3E96C-3650-C030-18E7-47C440095F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2E3E96C-3650-C030-18E7-47C440095F64}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{278C4927-F0C9-4A34-BC3E-8A61ABD60B48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{278C4927-F0C9-4A34-BC3E-8A61ABD60B48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{278C4927-F0C9-4A34-BC3E-8A61ABD60B48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{278C4927-F0C9-4A34-BC3E-8A61ABD60B48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9923804-38B8-440B-83E4-018766EB7F5E}
+	EndGlobalSection
+EndGlobal

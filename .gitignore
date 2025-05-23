@@ -21,7 +21,6 @@ dist-ssr
 *.suo
 *.ntvs*
 *.njsproj
-*.sln
 *.sw?
 KaffeeZeit.Server/obj/*
 KaffeeZeit.Server/bin/*
