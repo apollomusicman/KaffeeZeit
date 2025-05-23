@@ -29,11 +29,18 @@ https://localhost:50577
 - Choose a payer, this can be either the user deemed next, or can be overridden if someone else wants to pickup the next tab.  
 - Get the new list of current running tabs. 
 
+# UI walkthrough
+
+Start by adding coworkers
+[Add coworkers](https://github.com/apollomusicman/KaffeeZeit/blob/main/img/00-new-instance.png)
+
 # Design choices
 
 - Designed as a web application with a RESTful webserver so that ideally it could be hosted on the web. That way users could access the web app from their phones on the go, or even from the coffee shop, and not have to come back to the server to log orders and payments.
 - Orders have a revision numbers, this is to prevent two orders from coming in and overriding each other. 
 - Orders must be paid before a new order can be created.
+- Coworkers can be added or removed at any time. 
+- Not all coworkers have to be on every order. If someone is out sick or misses coffee day their tab won't be changed. 
 
 # What could be improved
 - The app could be fault tolerant and store tab state in a permanent storage such as a yaml/json file or use a light weight database. 
@@ -43,3 +50,4 @@ https://localhost:50577
 - Authn/Authz right now it's assumed all users act in good will and do not purposefully enter erroreous information.
 - edit tab information like coworkers name, favorite drink cost, and potentially the amount  of their running tab.
 - Sometimes people want to pay for birthdays/special events, you could add or remove an amount to a tab.
+- Coworkers can be removed before they've zeroed out their tab.  
