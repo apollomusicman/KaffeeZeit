@@ -32,7 +32,7 @@ https://localhost:50577
 # UI walkthrough
 
 Start by adding coworkers
-[Add coworkers](/img/00-new-instance.png)
+![Add coworkers](/img/00-new-instance.png)
 
 # Design choices
 
