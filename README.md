@@ -31,8 +31,26 @@ https://localhost:50577
 
 # UI walkthrough
 
-Start by adding coworkers
-![Add coworkers](/img/00-new-instance.png)
+Lauch the UI by navigating a browser to the hosted app.
+![This is what a first time launched application looks like](/img/00-new-instance.png)
+Currently the only thing that works in this state is the "Add Coworker button" go ahead and add a few! 
+![Oh no, we don't have any tabs. We need to add a coworker or two.](/img/01-Ad-coworker.png)
+Enter the coworkers name and favorite drink cost one at a time, push the "Submit" button when you are ready to create the coworker that was entered. 
+![That's better, it's good to have people to work and get coffee with](/img/02-coworkers-added.png)
+Now that we have some coworkers with tabs lets use the "New Order" button to create a new order. 
+![Let's get some coffee!](/img/03-order-started.png)
+Select the checkbox next to their name to include that coworker in the order.  You can also choose to use their favorite drink, or if they want to order something different. Click the "Submit" button when you are ready to commit to this order
+![Woah! Jay you sleeping okay at night?](/img/04-order-selection.png)
+The order has now been submitted, you can see whos turn it is next by the yellow "next" icon that appears on someones tab. 
+![Jay you're up! Are you okay taking this round?](/img/05-order-submitted.png)
+Now it's time to choose who is going to pick up this round. 
+![Just because Jay is next doesn't  mean he's on the hook](/img/06-select-payer.png)
+Select only one coworker to pay for this round, don't worry if you accidentally pick two, the app will remind you to only pick one.  
+![Thanks, dude! IOU1, Jordan you've got the next round.](/img/07-payment-submited.png)
+You're all done and ready to create another order! Notice how the next tag has been applied to who is next to pay, and the tabs have been updated with who still owes what.
+
+if you do need to part ways with a coworker (or remove and re-add since update isn't implemented yet) a coworker can be removed by pressing the "Remove Coworker" button.  Just select the checkboxes next to who you want to remove and click "Submit" 
+![No worries, no one is leaving just yet](/img/08-remove-coworker.png)
 
 # Design choices
 
@@ -51,3 +69,4 @@ Start by adding coworkers
 - edit tab information like coworkers name, favorite drink cost, and potentially the amount  of their running tab.
 - Sometimes people want to pay for birthdays/special events, you could add or remove an amount to a tab.
 - Coworkers can be removed before they've zeroed out their tab.  
+- REST api docs. 
