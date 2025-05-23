@@ -1,5 +1,5 @@
 # KaffeeZeit
-A web applicate to help you and your coworkers decide who's turn it is to buy coffee.
+A web application to help you and your coworkers decide who's turn it is to buy coffee.
 
 # Build
 KaffeZeit requires [.NET 9.0.300 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and [ASP.NET Core Runtime 9.0.5](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) to build and run 
