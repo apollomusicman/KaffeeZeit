@@ -2,7 +2,7 @@
 A web application to help you and your coworkers decide who's turn it is to buy coffee.
 
 # Build
-KaffeeZeit requires [.NET 9.0.300 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and [ASP.NET Core Runtime 9.0.5](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) to build and run 
+KaffeeZeit requires [.NET 9.0.300 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0), [ASP.NET Core Runtime 9.0.5](https://dotnet.microsoft.com/en-us/download/dotnet/9.0), and [Node.js](https://nodejs.org/en) to build and run 
 
 Once the .NET 9 SDK is installed the project can be built at the solution directory with this command:
 ```
