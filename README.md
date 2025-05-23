@@ -2,17 +2,17 @@
 A web application to help you and your coworkers decide who's turn it is to buy coffee.
 
 # Build
-KaffeZeit requires [.NET 9.0.300 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and [ASP.NET Core Runtime 9.0.5](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) to build and run 
+KaffeeZeit requires [.NET 9.0.300 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and [ASP.NET Core Runtime 9.0.5](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) to build and run 
 
 Once the .NET 9 SDK is installed the project can be built at the solution directory with this command:
 ```
 dotnet build
 ```
-The project is current configured to be built in Debug. the .dlls and exe will be written to the following directory:
+The project is currently configured to be built in Debug. the .dlls and .exe will be written to the following directory:
 ```
 \KaffeeZeit\KaffeeZeit.Server\bin\Debug\net9.0
 ```
-Oncec built it can be run with the following command from the `\KaffeeZeit\KaffeeZeit.Server` directory:
+Once built it can be run with the following command from the `\KaffeeZeit\KaffeeZeit.Server` directory:
 ```
 dotnet run
 ```
@@ -51,7 +51,7 @@ Select the checkbox next to their name to include that coworker in the order.  Y
 
 ![Woah! Jay you sleeping okay at night?](/img/04-order-selections.png) 
 
-The order has now been submitted, you can see whos turn it is next by the yellow "next" icon that appears on someones tab.  
+The order has now been submitted, you can see who's turn it is next by the yellow "next" icon that appears on someones tab.  
 
 ![Jay you're up! Are you okay taking this round?](/img/05-order-submitted.png)  
 
