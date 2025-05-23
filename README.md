@@ -24,12 +24,16 @@ https://localhost:50577
 # Steps to use
 
 - Add coworkers 
+- Get the list of current running tabs. 
 - Create a new order, users can either order their favorite drink or enter a custom amount if a different drink is ordered. 
 - Choose a payer, this can be either the user deemed next, or can be overridden if someone else wants to pickup the next tab.  
+- Get the new list of current running tabs. 
 
 # Design choices
 
 - Designed as a web application with a RESTful webserver so that ideally it could be hosted on the web. That way users could access the web app from their phones on the go, or even from the coffee shop, and not have to come back to the server to log orders and payments.
+- Orders have a revision numbers, this is to prevent two orders from coming in and overriding each other. 
+- Orders must be paid before a new order can be created.
 
 # What could be improved
 - The app could be fault tolerant and store tab state in a permanent storage such as a yaml/json file or use a light weight database. 
